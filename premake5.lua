@@ -1,7 +1,7 @@
-workspace "Ezesp"
+workspace "PremakeWinTemplate"
     configurations { "Debug", "Release" }
 
-project "Ezesp"
+project "PremakeWinTemplate"
     kind "ConsoleApp"
     language "C++"
     targetdir "bin/%{cfg.buildcfg}"
