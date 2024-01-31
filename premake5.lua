@@ -1,19 +1,37 @@
-local Workspace = "PremakeTemplate"
-local Project = "PremakeTemplate"
+Defs = {
+    workspace = "PremakeTemplate",
+    project = "PremakeTemplate"
+}
 
--- Output a ps1 file defining Workspace and Project
-local ps1 = io.open("scripts/project.ps1", "w")
-ps1:write("$Workspace = \"" .. Workspace .. "\"\n")
-ps1:write("$Project = \"" .. Project .. "\"\n")
-ps1:close()
+-- Output definitions to a PowerShell script
+local defsScript = io.open("scripts/definitions.ps1", "w")
+for k, v in pairs(Defs) do
+    local def = "$" .. k .. " = \"" .. v .. "\""
+    print(def)
+    defsScript:write(def .. "\n")
+end
+defsScript:close()
 
-workspace(Workspace)
+workspace(Defs.workspace)
     configurations { "Debug", "Release" }
+    platforms { "Win32", "Win64" }
 
-project(Project)
+    filter "platforms:Win32"
+        system "Windows"
+        architecture "x86"
+
+    filter "platforms:Win64"
+        system "Windows"
+        architecture "x86_64"
+
+outputdir = "%{cfg.buildcfg}-%{cfg.platform}"
+
+project(Defs.project)
     kind "ConsoleApp"
     language "C++"
-    targetdir "bin/%{cfg.buildcfg}"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("obj/" .. outputdir .. "/%{prj.name}")
 
     files { "src/**.h", "src/**.cpp" }
 
@@ -26,3 +44,4 @@ project(Project)
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "On"
+
