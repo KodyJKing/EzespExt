@@ -1,6 +1,6 @@
 param(
-    [string]$watchPath = "C:\path\to\watch",
-    [string]$command = "C:\path\to\command.exe"
+    [string]$watchPath,
+    [string]$command
 )
 
 Write-Host "Watching $watchPath for changes"
@@ -47,17 +47,21 @@ try {
 
 } finally {
 
+    # Clean up the watcher
+    Write-Host "Watch stopped."
+    $watcher.Dispose()
+
     # Clean up the process
-    if ($global:process -ne $null) {
+    if ($global:process) {
+        Write-Host "Cleaning up process."
         function Kill-Tree {
             Param([int]$ppid)
             Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $ppid } | ForEach-Object { Kill-Tree $_.ProcessId }
             Stop-Process -Id $ppid -Force
         }
         Kill-Tree $global:process.Id
+    } else {
+        Write-Host "No process to clean up."
     }
 
-    # Clean up the watcher
-    Write-Host "Watch stopped."
-    $watcher.Dispose()
 }

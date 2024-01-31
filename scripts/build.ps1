@@ -1,3 +1,8 @@
+param(
+    [string]$Config = "Debug",
+    [string]$Platform = "Win64"
+)
+
 & "./scripts/vendor/premake/premake5.exe" "vs2022"
-. scripts/project.ps1
-& "MSBuild.exe" "$Workspace.sln" "/t:Build" "/p:Configuration=Debug"
+. scripts/definitions.ps1
+& "MSBuild.exe" "$workspace.sln" "/t:Build" "/p:Configuration=$Config" "/p:Platform=$Platform"

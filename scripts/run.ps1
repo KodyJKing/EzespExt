@@ -1,2 +1,7 @@
-. scripts/project.ps1
-& "./bin/Debug/$Project.exe"
+param(
+    [string]$Config = "Debug",
+    [string]$Platform = "Win64"
+)
+
+. scripts/definitions.ps1
+& "bin/$Config-$Platform/$project/$project.exe"
