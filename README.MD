@@ -70,7 +70,7 @@ Arguments:
 
 ### `clean.ps1`
 
-Cleans the project.
+Removes all build files.
 
 ### `watch.ps1`
 
