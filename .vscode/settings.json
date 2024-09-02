@@ -45,7 +45,8 @@
         "forceincludes",
         "pchheader",
         "symbols",
-        "optimize"
+        "optimize",
+        "group"
     ],
     "files.associations": {
         "filesystem": "cpp"
