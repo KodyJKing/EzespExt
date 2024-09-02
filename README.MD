@@ -76,6 +76,8 @@ Removes all build files.
 
 Watches for file changes and runs a command.
 
+Press `R` in the terminal to rebuild without waiting for a file change.
+
 Arguments:
 - `-watchPath`: Path to watch for changes.
 - `-command`: Command to run on change.
