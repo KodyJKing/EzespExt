@@ -11,3 +11,5 @@ obj/
 
 # Exclude
 !vendor/bin
+
+scripts/definitions.ps1
