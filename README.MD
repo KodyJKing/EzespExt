@@ -15,8 +15,8 @@ Premake5 is included in the repo, so you don't need to install it. If you want t
 
 To build once run `.\scripts\build.ps1`. 
 
-To build and run on save run `.\scripts\watchRun.ps1`.
+To build and run on save run `.\scripts\watch_run.ps1`.
 
-To build on save run `.\scripts\watchBuild.ps1`.
+To build on save run `.\scripts\watch_build.ps1`.
 
-You can write custom watch scripts by invoking `.\scripts\watch.ps1` with the desired arguments. See the `watchRun.ps1` and `watchBuild.ps1` scripts for examples.
+You can write custom watch scripts by invoking `.\scripts\watch.ps1` with the desired arguments. See the `watch_run.ps1` and `watch_build.ps1` scripts for examples.
