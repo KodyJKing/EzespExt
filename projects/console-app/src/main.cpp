@@ -2,7 +2,7 @@
 #include <mylib/mylib.h>
 
 int main(void) {
-   printf("Hello from console-app-2\n");
+   printf("Hello from console-app\n");
    mylib::sampleExportFunction();
    return 0;
 }

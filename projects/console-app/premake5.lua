@@ -1,11 +1,13 @@
-project "console-app-1"
+project "console-app"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
     flags { "MultiProcessorCompile" }
 
+    links { "mylib" }
+
     files { "src/**.h", "src/**.cpp" }
-    includedirs { "src" }
+    includedirs { "src", "../mylib/src" }
 
     pchsource "src/pch.cpp"
     forceincludes "pch.h"

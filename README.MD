@@ -1,6 +1,6 @@
 # premake-win-template
 
-A template premake project for Windows console apps. Includes powershell scripts to compile and run on save.
+A template premake project for Windows console apps. Includes powershell scripts to compile and run on save. This is intented for my personal use, but feel free to use it as a starting point for your own projects.
 
 ## Requirements
 
