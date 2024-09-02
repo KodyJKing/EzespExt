@@ -4,7 +4,7 @@ Defs = {
 }
 
 -- Output definitions to a PowerShell script
-local defsScript = io.open("scripts/definitions.ps1", "w")
+local defsScript = io.open("build/definitions.ps1", "w")
 if defsScript == nil then
     print("Failed to open definitions script")
     os.exit(1)

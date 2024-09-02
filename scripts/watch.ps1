@@ -4,7 +4,7 @@ param(
     [string]$watchPath,
     [string]$command,
     [string]$extensions = ".cpp, .hpp, .c, .h, .lua, .ps1, .bat, .rc",
-    [string]$ignorePaths = ".\scripts\definitions.ps1"
+    [string]$ignorePaths = ".\build"
 )
 
 $global:process = $null
