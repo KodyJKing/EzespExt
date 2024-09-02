@@ -17,6 +17,7 @@ end
 defsScript:close()
 
 workspace(Defs.workspace)
+    location "build"
     configurations { "Debug", "Release" }
     platforms { "Win32", "Win64" }
 
@@ -28,16 +29,11 @@ workspace(Defs.workspace)
         system "Windows"
         architecture "x86_64"
 
-outputdir = "%{cfg.buildcfg}-%{cfg.platform}"
-
 project(Defs.project)
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
     flags { "MultiProcessorCompile" }
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("obj/" .. outputdir .. "/%{prj.name}")
 
     files { "src/**.h", "src/**.cpp" }
 

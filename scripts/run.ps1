@@ -4,4 +4,4 @@ param(
 )
 
 . scripts/definitions.ps1
-& "bin/$Config-$Platform/$project/$project.exe" | Out-Default
+& "build/bin/$Platform/$Config/$project.exe" | Out-Default

@@ -2,6 +2,7 @@
 .vs/
 bin/
 obj/
+build/
 
 # Files
 *.vcxproj
