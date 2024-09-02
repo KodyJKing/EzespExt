@@ -1,10 +1,11 @@
-project "console-app-1"
-    kind "ConsoleApp"
+project "library-1"
+    kind "StaticLib"
     language "C++"
     cppdialect "C++20"
     flags { "MultiProcessorCompile" }
 
     files { "src/**.h", "src/**.cpp" }
+
     includedirs { "src" }
 
     pchsource "src/pch.cpp"

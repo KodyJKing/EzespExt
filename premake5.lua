@@ -14,6 +14,6 @@ workspace "premake-template"
 -- Include all projects in the projects directory
 local projects = os.matchdirs("projects/*")
 for i, project in ipairs(projects) do
-    print("Including project: " .. project)
+    print("\27[95mIncluding project: " .. project .. "\27[0m\n")
     include (project)
 end

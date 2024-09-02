@@ -1,12 +1,12 @@
 . ./config.ps1
 
 function Get-Project($project) {
-    if ($Config_StartProject) {
-        return $Config_StartProject
-    }
-
     if ($project) {
         return $project
+    }
+
+    if ($Config_StartProject) {
+        return $Config_StartProject
     }
 
     # Get a list of directories under /projects

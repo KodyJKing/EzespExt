@@ -4,9 +4,10 @@ project "console-app-2"
     cppdialect "C++20"
     flags { "MultiProcessorCompile" }
 
-    files { "src/**.h", "src/**.cpp" }
+    links { "library-1" }
 
-    includedirs { "src" }
+    files { "src/**.h", "src/**.cpp" }
+    includedirs { "src", "../library-1/src" }
 
     pchsource "src/pch.cpp"
     forceincludes "pch.h"

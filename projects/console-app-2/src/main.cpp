@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <library-1.h>
 
 int main(void) {
-   puts("Hello from console-app-2");
+   printf("Hello from console-app-2\n");
+   sampleExportFunction();
    return 0;
 }
