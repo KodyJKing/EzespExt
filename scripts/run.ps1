@@ -8,6 +8,8 @@ param(
 $project = Get-Project $Project
 
 # Print the project
+Write-Host ""
+Write-Host ""
 Write-Host "Running $project with Configuration=$Config and Platform=$Platform" -ForegroundColor Yellow
 
 # Run the project

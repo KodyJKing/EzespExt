@@ -6,9 +6,9 @@ project "library-1"
 
     files { "src/**.h", "src/**.cpp" }
 
-    includedirs { "src" }
+    includedirs { "src", "src/library-1" }
 
-    pchsource "src/pch.cpp"
+    pchsource "src/library-1/pch.cpp"
     forceincludes "pch.h"
     pchheader "pch.h"
 

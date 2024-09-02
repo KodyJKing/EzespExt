@@ -14,4 +14,7 @@ if (-not $ide) {
     }
 }
 
+Write-Host ""
+Write-Host ""
+Write-Host "Generating project files for $ide" -ForegroundColor Yellow
 & "./scripts/vendor/premake/premake5.exe" $ide

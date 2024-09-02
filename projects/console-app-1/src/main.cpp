@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main(void) {
-   puts("Hello from console-app-1");
+   printf("Hello from console-app-1\n");
    return 0;
 }

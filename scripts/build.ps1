@@ -11,6 +11,8 @@ param(
 $workspace = Get-ChildItem -Path build -Filter *.sln | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
 # Print the workspace
+Write-Host ""
+Write-Host ""
 Write-Host "Building $workspace with Configuration=$Config and Platform=$Platform and IDE=$IDE" -ForegroundColor Yellow
 
 # Build the workspace
