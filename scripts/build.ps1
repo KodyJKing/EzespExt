@@ -1,16 +1,17 @@
 param(
     [string]$Config = "Debug",
-    [string]$Platform = "Win64"
+    [string]$Platform = "Win64",
+    [string]$IDE = $null
 )
 
-# Generate project files
-& "./scripts/vendor/premake/premake5.exe" "vs2022"
+# # Generate project files
+& "./scripts/premake.ps1 $IDE"
 
 # Get most recent .sln file under /build
 $workspace = Get-ChildItem -Path build -Filter *.sln | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
 # Print the workspace
-Write-Host "Building $workspace with Configuration=$Config and Platform=$Platform"
+Write-Host "Building $workspace with Configuration=$Config and Platform=$Platform and IDE=$IDE" -ForegroundColor Yellow
 
 # Build the workspace
 & "MSBuild.exe" "build/$workspace" "/t:Build" "/p:Configuration=$Config" "/p:Platform=$Platform"
