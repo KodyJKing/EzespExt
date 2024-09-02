@@ -1,4 +1,4 @@
-project "library-1"
+project "mylib"
     kind "StaticLib"
     language "C++"
     cppdialect "C++20"
@@ -6,9 +6,9 @@ project "library-1"
 
     files { "src/**.h", "src/**.cpp" }
 
-    includedirs { "src", "src/library-1" }
+    includedirs { "src", "src/mylib" }
 
-    pchsource "src/library-1/pch.cpp"
+    pchsource "src/mylib/pch.cpp"
     forceincludes "pch.h"
     pchheader "pch.h"
 

@@ -5,10 +5,12 @@ project "unit-test"
     flags { "MultiProcessorCompile" }
 
     files { "src/**.h", "src/**.cpp" }
-
-    includedirs { "src", "../../vendor/catch2/src" }
-
-    links { "catch2" }
+    includedirs { 
+        "src", 
+        "../../vendor/catch2/src",
+        "../mylib/src"
+    }
+    links { "catch2", "mylib" }
 
     filter "configurations:Debug"
         defines { "DEBUG" }

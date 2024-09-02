@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <library-1/library-1.h>
+#include <mylib/mylib.h>
 
 int main(void) {
    printf("Hello from console-app-2\n");
-   sampleExportFunction();
+   mylib::sampleExportFunction();
    return 0;
 }
