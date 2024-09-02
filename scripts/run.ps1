@@ -1,16 +1,16 @@
 param(
     [string]$Config = "Debug",
-    [string]$Platform = "Win64"
+    [string]$Platform = "Win64",
+    [string]$Project = $null
 )
 
-# Get most recent .vcxproj file under /build
-$project = Get-ChildItem -Path build -Filter *.vcxproj | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+. scripts/get_project.ps1
+$project = Get-Project $Project
 
 # Print the project
-Write-Host "Running $project with Configuration=$Config and Platform=$Platform"
-
-# Remove the .vcxproj extension
-$project = $project.Name -replace ".vcxproj", ""
+Write-Host ""
+Write-Host ""
+Write-Host "Running $project with Configuration=$Config and Platform=$Platform" -ForegroundColor Yellow
 
 # Run the project
 & "build/bin/$Platform/$Config/$project.exe" | Out-Default

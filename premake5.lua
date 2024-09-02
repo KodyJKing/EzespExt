@@ -1,4 +1,4 @@
-workspace "PremakeTemplate"
+workspace "premake-template"
     location "build"
     configurations { "Debug", "Release" }
     platforms { "Win32", "Win64" }
@@ -11,25 +11,9 @@ workspace "PremakeTemplate"
         system "Windows"
         architecture "x86_64"
 
-project "PremakeTemplate"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++20"
-    flags { "MultiProcessorCompile" }
-
-    files { "src/**.h", "src/**.cpp" }
-
-    includedirs { "src" }
-
-    pchsource "src/pch.cpp"
-    forceincludes "pch.h"
-    pchheader "pch.h"
-
-    filter "configurations:Debug"
-        defines { "DEBUG" }
-        symbols "On"
-
-    filter "configurations:Release"
-        defines { "NDEBUG" }
-        optimize "On"
-
+-- Include all projects in the projects directory
+local projects = os.matchdirs("projects/*")
+for i, project in ipairs(projects) do
+    print("\27[95mIncluding project: " .. project .. "\27[0m\n")
+    include (project)
+end
