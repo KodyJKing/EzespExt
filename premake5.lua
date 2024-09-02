@@ -5,6 +5,10 @@ Defs = {
 
 -- Output definitions to a PowerShell script
 local defsScript = io.open("scripts/definitions.ps1", "w")
+if defsScript == nil then
+    print("Failed to open definitions script")
+    os.exit(1)
+end
 for k, v in pairs(Defs) do
     local def = "$" .. k .. " = \"" .. v .. "\""
     print(def)
@@ -29,6 +33,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.platform}"
 project(Defs.project)
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++20"
+    flags { "MultiProcessorCompile" }
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
@@ -36,6 +42,10 @@ project(Defs.project)
     files { "src/**.h", "src/**.cpp" }
 
     includedirs { "src" }
+
+    pchsource "src/pch.cpp"
+    forceincludes "pch.h"
+    pchheader "pch.h"
 
     filter "configurations:Debug"
         defines { "DEBUG" }
