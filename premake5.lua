@@ -1,22 +1,4 @@
-Defs = {
-    workspace = "PremakeTemplate",
-    project = "PremakeTemplate"
-}
-
--- Output definitions to a PowerShell script
-local defsScript = io.open("build/definitions.ps1", "w")
-if defsScript == nil then
-    print("Failed to open definitions script")
-    os.exit(1)
-end
-for k, v in pairs(Defs) do
-    local def = "$" .. k .. " = \"" .. v .. "\""
-    print(def)
-    defsScript:write(def .. "\n")
-end
-defsScript:close()
-
-workspace(Defs.workspace)
+workspace "PremakeTemplate"
     location "build"
     configurations { "Debug", "Release" }
     platforms { "Win32", "Win64" }
@@ -29,7 +11,7 @@ workspace(Defs.workspace)
         system "Windows"
         architecture "x86_64"
 
-project(Defs.project)
+project "PremakeTemplate"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
