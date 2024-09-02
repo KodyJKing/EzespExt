@@ -11,13 +11,21 @@ workspace "premake-template"
         system "Windows"
         architecture "x86_64"
 
+-- Include all premake projects in the vendor directory
 group "vendor"
-    include "vendor/catch2"
+    local vendorProjects = os.matchdirs("vendor/*")
+    for i, project in ipairs(vendorProjects) do
+        -- Check that the project has a premake5.lua file
+        if os.isfile(project .. "/premake5.lua") then
+            print("\27[95mIncluding vendor project: " .. project .. "\27[0m\n")
+            include (project)
+        end
+    end
 group ""
 
 -- Include all projects in the projects directory
 local projects = os.matchdirs("projects/*")
 for i, project in ipairs(projects) do
-    print("\27[95mIncluding project: " .. project .. "\27[0m\n")
+    print("\27[34mIncluding project: " .. project .. "\27[0m\n")
     include (project)
 end
