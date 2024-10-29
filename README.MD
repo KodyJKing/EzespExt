@@ -44,6 +44,10 @@ Arguments:
 - `-Config` Configuration to build. Values are `Debug` and `Release`. Default is `Debug`.
 - `-IDE` IDE premake will generate project files for. Default is `vs2022`.
 
+### `clean.ps1`
+
+Removes all build files.
+
 ### `run.ps1`
 
 Arguments:
@@ -67,10 +71,6 @@ Press `R` in the terminal to rebuild without waiting for a file change.
 
 Arguments:
 - Inherits from `build.ps1` and `run.ps1`.
-
-### `clean.ps1`
-
-Removes all build files.
 
 ### `watch.ps1`
 
